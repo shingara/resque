@@ -23,11 +23,11 @@ module Resque
       def self.all(start = 0, count = 1)
         Resque.list_range(:failed, start, count)
       end
-      
+
       def self.clear
-        Resque.redis.delete('resque:failed')
+        Resque.redis.del('failed')
       end
-      
+
     end
   end
 end
