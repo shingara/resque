@@ -40,6 +40,10 @@ if (i = ARGV.index('-r')) && ARGV[i+1]
   ARGV.delete_at(i+1)
 end
 
+if ENV['REDIS_NAMESPACE']
+  Resque.redis.namespace = ENV['REDIS_NAMESPACE']
+end
+
 case ARGV[0]
 when 'kill'
   kill ARGV[1]
